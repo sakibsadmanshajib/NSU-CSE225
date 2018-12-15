@@ -1,0 +1,53 @@
+# depslib dependency file v1.0
+1544915522 source:d:\projects\github\nsu-cse225\quetype.cpp
+	"QueType.h"
+
+1544915549 d:\projects\github\nsu-cse225\quetype.h
+	"Customer.h"
+
+1544915529 source:d:\projects\github\nsu-cse225\stacktype.cpp
+	"StackType.h"
+
+1544915303 d:\projects\github\nsu-cse225\stacktype.h
+	"Seat.h"
+
+1544915617 source:d:\projects\github\nsu-cse225\unsortedtype.cpp
+	"UnsortedType.h"
+
+1544915570 d:\projects\github\nsu-cse225\unsortedtype.h
+	"Customer.h"
+
+1544912553 source:d:\projects\github\nsu-cse225\seat.cpp
+	"Seat.h"
+
+1544909902 d:\projects\github\nsu-cse225\seat.h
+	<iostream>
+	<string>
+
+1544915766 source:d:\projects\github\nsu-cse225\customer.cpp
+	"Customer.h"
+
+1544915756 d:\projects\github\nsu-cse225\customer.h
+	<iostream>
+	<string>
+
+1544915834 source:d:\projects\github\nsu-cse225\main.cpp
+	<iostream>
+	<string>
+	<fstream>
+	<bits.h>
+	<vector>
+	<sstream>
+	"StackType.h"
+	"UnsortedType.h"
+	"QueType.h"
+
+1544914262 d:\projects\github\nsu-cse225\stacktype.cpp
+	"StackType.h"
+
+1544912515 d:\projects\github\nsu-cse225\unsortedtype.cpp
+	"UnsortedType.h"
+
+1544911220 d:\projects\github\nsu-cse225\quetype.cpp
+	"QueType.h"
+

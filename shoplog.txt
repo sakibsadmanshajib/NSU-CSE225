@@ -1,0 +1,10 @@
+--------------
+Customers In Shop
+[ ]
+
+Customers Waiting In Line
+[ ]
+
+Seat Stack
+[ X, X, X, X, X]
+
