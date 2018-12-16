@@ -5,33 +5,77 @@
 #include <vector>
 #include <sstream>
 
+#include "Seat.h"
+#include "Customer.h"
+
 #include "StackType.h"
 #include "UnsortedType.h"
 #include "QueType.h"
 
 using namespace std;
 
+void out(ofstream outputFile, string inputString, UnsortedType customerInShop, StackType seats, QueType customerInLine)
+{
+    StackType <Seat> seatsTemp;
+    UnsortedType <Customer> customerInShopTemp;
+    QueType <Customer> customerInLineTemp;
+
+    outputFile << "--------------" << endl;
+    outputFile << inputString << endl;
+    outputFile << "--------------" << endl;
+    outputFile << "Customers In Shop" << endl;
+    outputFile << "[ ";
+
+    customerInShopTemp = customerInShop;
+    customerInShopTemp.ResetList();
+    while(tempC != NULL)
+    {
+        customerInShopTemp.GetNextItem(tempC);
+        outputFile << tempC.Print() << ", ";
+    }
+
+    outputFile << "]" << endl;
+
+    outputFile << "Customers Waiting In Line" << endl;
+    outputFile << "[ " << endl;
+
+    customerInLineTemp = customerInLine;
+    while(tempC != NULL)
+    {
+        customerInLineTemp.Dequeue(tempC);
+        outputFile << tempC.Print() << ", ";
+    }
+
+    outputFile << "]" << endl;
+
+    outputFile << "Seat Stack" << endl;
+    outputFile << "[ ";
+
+    seatsTemp = seats;
+    while(!seatsTemp.IsEmpty())
+    {
+        seatsTemp.Top(tempS);
+        string tempStr = tempS.Print();
+        outputFile << tempStr << ", ";
+        seatsTemp.Pop();
+    }
+
+    outputFile << "]" << endl;
+}
+
 int main()
 {
-    StackType seats;
-    UnsortedType customerInShop;
-    QueType customerInLine;
-
-    cout << "1" << endl;
+    StackType <Seat> seats;
+    UnsortedType <Customer> customerInShop;
+    QueType <Customer> customerInLine;
 
     Seat X;
-
-    cout << "2" << endl;
 
     while(!seats.IsFull())
         seats.Push(X);
 
-    cout << "3" << endl;
-
     ifstream inputFile;
     ofstream outputFile;
-
-    cout << "4" << endl;
 
     inputFile.open("shopevents.txt");
 
@@ -49,8 +93,6 @@ int main()
         exit(1);
     }
 
-    cout << "5" << endl;
-
     outputFile << "--------------" << endl;
     outputFile << "Customers In Shop" << endl;
     outputFile << "[ ]\n" << endl;
@@ -59,53 +101,36 @@ int main()
     outputFile << "Seat Stack" << endl;
     outputFile << "[ X, X, X, X, X]\n" << endl;
 
-    cout << "6" << endl;
-
     string inputString;
-
-    int i = 7;
 
     while(inputFile >> inputString && inputString != "CLOSE")
     {
-        /*outputFile << "--------------" << endl;
-        outputFile << inputString << endl;
-        outputFile << "--------------" << endl;
-        outputFile << "Customers In Shop" << endl;
-        outputFile << "[ ";*/
-
-        cout << i++ << endl;
-
         vector <string> token;
 
         string intermediate;
 
         stringstream line(inputString);
 
-        cout << i++ << endl;
-
         while(getline(line, intermediate, ' '))
         {
             token.push_back(intermediate);
         }
 
-        cout << i++ << endl;
+        Customer tempC(token[1]);
+        Seat tempS;
 
         if(token[0].compare("ARRIVE"))
         {
             if(!seats.IsEmpty())
             {
                 seats.Pop();
-                Customer tempC(token[1]);
                 customerInShop.InsertItem(tempC);
 
             }
             else
             {
-                Customer tempC(token[1]);
                 customerInLine.Enqueue(tempC);
             }
-
-            cout << i++ << endl;
         }
         else if(token[0].compare("LEAVE"))
         {
@@ -113,7 +138,6 @@ int main()
                 seats.Push(X);
             else
             {
-                Customer tempC(token[1]);
                 customerInShop.DeleteItem(tempC);
                 if(!customerInLine.IsEmpty())
                 {
@@ -122,18 +146,15 @@ int main()
                     customerInShop.InsertItem(tempCo);
                 }
             }
-
-            cout << i++ << endl;
         }
-
-        cout << i++ << endl;
-
-        /*outputFile << "Customers Waiting In Line" << endl;
-        outputFile << "[ ]\n" << endl;
-        outputFile << "Seat Stack" << endl;
-        outputFile << "[ X, X, X, X, X]\n" << endl;*/
+        out(outputFile, inputString, customerInShop, seats, customerInLine);
     }
+
+    out(outputFile, "CLOSED", customerInShop, seats, customerInLine);
+
     inputFile.close();
+
+    outputFile << "End of processing.";
     outputFile.close();
 
     return 0;

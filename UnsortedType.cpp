@@ -1,38 +1,38 @@
 #include "UnsortedType.h"
-
-UnsortedType::UnsortedType()
+template <class ItemType>
+UnsortedType<ItemType>::UnsortedType()
 {
     length = 0;
     currentPos = -1;
 }
-
-void UnsortedType::MakeEmpty()
+template <class ItemType>
+void UnsortedType<ItemType>::MakeEmpty()
 {
     length = 0;
 }
-
-bool UnsortedType::IsFull()
+template <class ItemType>
+bool UnsortedType<ItemType>::IsFull()
 {
-    return (length == MAX_ITEM);
+    return (length == MAX_ITEMS);
 }
-
-int UnsortedType::LengthIs()
+template <class ItemType>
+int UnsortedType<ItemType>::LengthIs()
 {
     return length;
 }
-
-void UnsortedType::ResetList()
+template <class ItemType>
+void UnsortedType<ItemType>::ResetList()
 {
     currentPos = -1;
 }
-
-void UnsortedType::GetNextItem(Customer& item)
+template <class ItemType>
+void UnsortedType<ItemType>::GetNextItem(ItemType& item)
 {
     currentPos++;
     item = info [currentPos] ;
 }
-
-void UnsortedType::RetrieveItem(Customer& item, bool& found)
+template <class ItemType>
+void UnsortedType<ItemType>::RetrieveItem(ItemType& item, bool& found)
 {
     int location = 0;
     bool moreToSearch = (location < length);
@@ -51,14 +51,14 @@ void UnsortedType::RetrieveItem(Customer& item, bool& found)
         }
     }
 }
-
-void UnsortedType::InsertItem(Customer item)
+template <class ItemType>
+void UnsortedType<ItemType>::InsertItem(ItemType item)
 {
     info[length] = item;
     length++;
 }
-
-void UnsortedType::DeleteItem(Customer item)
+template <class ItemType>
+void UnsortedType<ItemType>::DeleteItem(ItemType item)
 {
     int location = 0;
     while (item != info[location])

@@ -1,8 +1,7 @@
-#include "Seat.h"
 #ifndef STACKTYPE_H
 #define STACKTYPE_H
 
-const int MAX_ITEMS = 5;
+const int MAX_ITEMS = 20;
 
 class FullStack
 {
@@ -14,19 +13,21 @@ class EmptyStack
 
 };
 
+template <class ItemType>
+
 class StackType
 {
     public:
         StackType();
         bool IsFull();
         bool IsEmpty();
-        void Push(Seat);
+        void Push(ItemType);
         void Pop();
-        Seat Top();
+        ItemType Top();
 
     private:
         int top;
-        Seat item[MAX_ITEMS];
+        ItemType item[MAX_ITEMS];
 };
 
 #endif // STACKTYPE_H
