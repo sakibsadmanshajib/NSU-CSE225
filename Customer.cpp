@@ -26,7 +26,7 @@ bool Customer::operator==(Customer cus)
         return false;
 }
 
-void Customer::Print()
+string Customer::Print()
 {
-    cout << name;
+    return name;
 }

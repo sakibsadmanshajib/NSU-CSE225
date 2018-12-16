@@ -13,7 +13,7 @@ class Customer
         Customer(string);
         bool operator!=(Customer);
         bool operator==(Customer);
-        void Print();
+        string Print();
 
     private:
         string name;

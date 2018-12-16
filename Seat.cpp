@@ -6,7 +6,7 @@ Seat::Seat()
     type = "normal";
 }
 
-void Seat::Print()
+string Seat::Print()
 {
-    cout << "X";
+    return "X";
 }

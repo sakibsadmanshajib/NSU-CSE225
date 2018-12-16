@@ -1,53 +1,54 @@
 # depslib dependency file v1.0
-1544915522 source:d:\projects\github\nsu-cse225\quetype.cpp
+1544575085 source:d:\projects\github\nsu-cse225\quetype.cpp
 	"QueType.h"
+	<iostream>
 
-1544915549 d:\projects\github\nsu-cse225\quetype.h
-	"Customer.h"
+1544574881 d:\projects\github\nsu-cse225\quetype.h
 
-1544915529 source:d:\projects\github\nsu-cse225\stacktype.cpp
+1544569031 source:d:\projects\github\nsu-cse225\stacktype.cpp
 	"StackType.h"
 
-1544915303 d:\projects\github\nsu-cse225\stacktype.h
-	"Seat.h"
+1544993721 d:\projects\github\nsu-cse225\stacktype.h
 
-1544915617 source:d:\projects\github\nsu-cse225\unsortedtype.cpp
+1544991433 source:d:\projects\github\nsu-cse225\unsortedtype.cpp
 	"UnsortedType.h"
 
-1544915570 d:\projects\github\nsu-cse225\unsortedtype.h
-	"Customer.h"
+1544991438 d:\projects\github\nsu-cse225\unsortedtype.h
 
-1544912553 source:d:\projects\github\nsu-cse225\seat.cpp
+1544975176 source:d:\projects\github\nsu-cse225\seat.cpp
 	"Seat.h"
 
-1544909902 d:\projects\github\nsu-cse225\seat.h
+1544975174 d:\projects\github\nsu-cse225\seat.h
 	<iostream>
 	<string>
 
-1544915766 source:d:\projects\github\nsu-cse225\customer.cpp
+1544975735 source:d:\projects\github\nsu-cse225\customer.cpp
 	"Customer.h"
 
-1544915756 d:\projects\github\nsu-cse225\customer.h
+1544975722 d:\projects\github\nsu-cse225\customer.h
 	<iostream>
 	<string>
 
-1544915834 source:d:\projects\github\nsu-cse225\main.cpp
+1544995959 source:d:\projects\github\nsu-cse225\main.cpp
 	<iostream>
 	<string>
 	<fstream>
-	<bits.h>
 	<vector>
 	<sstream>
+	<stdlib.h>
+	"Seat.h"
+	"Customer.h"
+	"StackType.cpp"
+	"UnsortedType.cpp"
+	"QueType.cpp"
+
+1544569031 d:\projects\github\nsu-cse225\stacktype.cpp
 	"StackType.h"
-	"UnsortedType.h"
-	"QueType.h"
 
-1544914262 d:\projects\github\nsu-cse225\stacktype.cpp
-	"StackType.h"
-
-1544912515 d:\projects\github\nsu-cse225\unsortedtype.cpp
+1544991433 d:\projects\github\nsu-cse225\unsortedtype.cpp
 	"UnsortedType.h"
 
-1544911220 d:\projects\github\nsu-cse225\quetype.cpp
+1544575085 d:\projects\github\nsu-cse225\quetype.cpp
 	"QueType.h"
+	<iostream>
 

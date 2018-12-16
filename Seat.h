@@ -10,7 +10,7 @@ class Seat
 {
     public:
         Seat();
-        void Print();
+        string Print();
 
     private:
         string color;
