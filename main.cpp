@@ -62,8 +62,7 @@ void out(ofstream &outputFile, string inputString, UnsortedType<Customer> custom
     while(!seatsTemp.IsEmpty())
     {
         tempS = seatsTemp.Top();
-        string tempStr = tempS.Print();
-        outputFile << tempStr << ", ";
+        outputFile << tempS.Print() << ", ";
         seatsTemp.Pop();
     }
 
