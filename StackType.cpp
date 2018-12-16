@@ -1,40 +1,31 @@
 #include "StackType.h"
 
-template <class ItemType>
-StackType<ItemType>::StackType()
-{
-    top = -1;
-}
+StackType::StackType() : top(-1) {}
 
-template <class ItemType>
-bool StackType<ItemType>::IsEmpty()
+bool StackType::IsEmpty()
 {
     return (top == -1);
 }
 
-template <class ItemType>
-bool StackType<ItemType>::IsFull()
+bool StackType::IsFull()
 {
     return (top == MAX_ITEMS-1);
 }
 
-template <class ItemType>
-void StackType<ItemType>::Push(ItemType newItem)
+void StackType::Push(Seat newItem)
 {
     if(IsFull()) throw FullStack();
-    top++;
+    ++top;
     item[top] = newItem;
 }
 
-template <class ItemType>
-void StackType<ItemType>::Pop()
+void StackType::Pop()
 {
-    if( IsEmpty() ) throw FullStack();
-    top--;
+    if( IsEmpty() ) throw EmptyStack();
+    --top;
 }
 
-template <class ItemType>
-ItemType StackType<ItemType>::Top()
+Seat StackType::Top()
 {
     if( IsEmpty() ) throw EmptyStack();
     return item[top];

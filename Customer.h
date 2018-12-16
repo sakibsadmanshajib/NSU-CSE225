@@ -4,19 +4,16 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
-
 class Customer
 {
     public:
-        Customer();
-        Customer(string);
-        bool operator!=(Customer);
-        bool operator==(Customer);
-        string Print();
+        Customer(const std::string& n=std::string(""));
+        bool operator!=(const Customer&) const;
+        bool operator==(const Customer&) const;
+        void Print();
 
     private:
-        string name;
+        std::string name;
 };
 
 #endif // CUSTOMER_H

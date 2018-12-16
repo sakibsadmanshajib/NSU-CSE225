@@ -1,12 +1,11 @@
 #include "Seat.h"
 
-Seat::Seat()
-{
-    color = "default";
-    type = "normal";
-}
+Seat::Seat() :
+    color("default"),
+    type("normal")
+{}
 
-string Seat::Print()
+void Seat::Print()
 {
-    return "X";
+    std::cout << "X";
 }

@@ -1,48 +1,46 @@
 #include "UnsortedType.h"
-template <class ItemType>
-UnsortedType<ItemType>::UnsortedType()
+
+UnsortedType::UnsortedType() :
+    length(0),
+    currentPos(-1)
+{}
+
+void UnsortedType::MakeEmpty()
 {
     length = 0;
-    currentPos = -1;
 }
-template <class ItemType>
-void UnsortedType<ItemType>::MakeEmpty()
+
+bool UnsortedType::IsFull()
 {
-    length = 0;
+    return (length == MAX_ITEM);
 }
-template <class ItemType>
-bool UnsortedType<ItemType>::IsFull()
-{
-    return (length == MAX_ITEMS);
-}
-template <class ItemType>
-int UnsortedType<ItemType>::LengthIs()
+
+int UnsortedType::LengthIs()
 {
     return length;
 }
-template <class ItemType>
-void UnsortedType<ItemType>::ResetList()
+
+void UnsortedType::ResetList()
 {
     currentPos = -1;
 }
-template <class ItemType>
-void UnsortedType<ItemType>::GetNextItem(ItemType& item)
+
+void UnsortedType::GetNextItem(Customer& item)
 {
     currentPos++;
     item = info [currentPos] ;
 }
-template <class ItemType>
-void UnsortedType<ItemType>::RetrieveItem(ItemType& item, bool& found)
+
+bool UnsortedType::RetrieveItem(Customer& item)
 {
     int location = 0;
     bool moreToSearch = (location < length);
-    found = false;
-    while (moreToSearch && !found)
+    while (moreToSearch)
     {
         if(item == info[location])
         {
-            found = true;
             item = info[location];
+            return true;
         }
         else
         {
@@ -50,20 +48,22 @@ void UnsortedType<ItemType>::RetrieveItem(ItemType& item, bool& found)
             moreToSearch = (location < length);
         }
     }
+    return false;
 }
-template <class ItemType>
-void UnsortedType<ItemType>::InsertItem(ItemType item)
+
+void UnsortedType::InsertItem(Customer item)
 {
+    if(length==MAX_ITEM) std::cout << "already maxed\n";
     info[length] = item;
-    length++;
+    ++length;
 }
-template <class ItemType>
-void UnsortedType<ItemType>::DeleteItem(ItemType item)
+
+void UnsortedType::DeleteItem(Customer item)
 {
+    std::cout << "delete\n";
     int location = 0;
     while (item != info[location])
         location++;
     info[location] = info[length - 1];
-    length--;
-
+    --length;
 }

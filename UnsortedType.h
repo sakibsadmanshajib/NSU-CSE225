@@ -1,9 +1,9 @@
 #ifndef UNSORTEDTYPE_H
 #define UNSORTEDTYPE_H
+#include "Customer.h"
 
+const int MAX_ITEM = 5;
 
-const int MAX_ITEMS = 5;
-template <class ItemType>
 class UnsortedType
 {
     public :
@@ -11,15 +11,15 @@ class UnsortedType
         void MakeEmpty();
         bool IsFull();
         int LengthIs();
-        void InsertItem(ItemType);
-        void DeleteItem(ItemType);
-        void RetrieveItem(ItemType&, bool&);
+        void InsertItem(Customer);
+        void DeleteItem(Customer);
+        bool RetrieveItem(Customer&);
         void ResetList();
-        void GetNextItem(ItemType&);
+        void GetNextItem(Customer&);
     private:
         int length;
-        ItemType info[MAX_ITEMS];
-    int currentPos;
+        Customer info[MAX_ITEM];
+        int currentPos;
 };
 
 #endif // UNSORTEDTYPE_H

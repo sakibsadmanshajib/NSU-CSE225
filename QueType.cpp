@@ -1,86 +1,53 @@
-#include "QueType.h" 
-#include <iostream> 
-using namespace std; 
- 
-template <class ItemType> 
-QueType<ItemType>::QueType() 
-{     
-    front = NULL;     
-    rear = NULL; 
-} 
+#include "QueType.h"
 
-template <class ItemType> 
-bool QueType<ItemType>::IsEmpty() 
-{     
-    return (front == NULL); 
-} 
+QueType::QueType(int max) :
+    maxQue(max + 1),
+    front(maxQue - 1),
+    rear(maxQue - 1),
+    items(new Customer[maxQue])
+{}
 
-template<class ItemType> 
-bool QueType<ItemType>::IsFull() 
-{     
-    NodeType* location;     
-    try     
-    {         
-        location = new NodeType;         
-        delete location;         
-        return false;     
-    }     
-    catch(bad_alloc& exception)     
-    {         
-        return true;     
-    } 
-} 
+QueType::QueType() : QueType(49) {}
 
-template <class ItemType> 
-void QueType<ItemType>::Enqueue(ItemType newItem) 
-{     
-    if (IsFull())         
-        throw FullQueue();     
-    else     
-    {         
-        NodeType* newNode;         
-        newNode = new NodeType;         
-        newNode->info = newItem;         
-        newNode->next = NULL;         
-        if (rear == NULL)             
-            front = newNode;         
-        else             
-            rear->next = newNode;         
-            rear = newNode;     
-    } 
-} 
-    
-template <class ItemType> 
-void QueType<ItemType>::Dequeue(ItemType& item) 
-{     
-    if (IsEmpty())         
-        throw EmptyQueue();     
-    else     
-    {         
-        NodeType* tempPtr;         
-        tempPtr = front;         
-        item = front->info;         
-        front = front->next;         
-        if (front == NULL)             
-        rear = NULL;         
-        delete tempPtr;     
-    } 
-} 
+QueType::~QueType()
+{
+    delete[] items;
+}
 
-template <class ItemType> 
-void QueType<ItemType>::MakeEmpty() 
-{     
-    NodeType* tempPtr;     
-    while (front != NULL)     
-    {         
-        tempPtr = front;         
-        front = front->next;         
-        delete tempPtr;     
-    }     
-    rear = NULL; 
-} 
-template <class ItemType> 
-QueType<ItemType>::~QueType() 
-{     
-    MakeEmpty(); 
+void QueType::MakeEmpty()
+{
+    front = maxQue - 1;
+    rear = maxQue - 1;
+}
+
+bool QueType::IsEmpty()
+{
+    return (rear == front);
+}
+
+bool QueType::IsFull()
+{
+    return ((rear+1)%maxQue == front);
+}
+
+void QueType::Enqueue(Customer newItem)
+{
+    if (IsFull())
+        throw FullQueue();
+    else
+    {
+        rear = (rear +1) % maxQue;
+        items[rear] = newItem;
+    }
+}
+
+void QueType::Dequeue(Customer& item)
+{
+    if (IsEmpty())
+        throw EmptyQueue();
+    else
+    {
+        front = (front + 1) % maxQue;
+        item = items[front];
+    }
 }

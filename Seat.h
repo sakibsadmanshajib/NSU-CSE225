@@ -4,17 +4,15 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
-
 class Seat
 {
     public:
         Seat();
-        string Print();
+        void Print();
 
     private:
-        string color;
-        string type;
+        std::string color;
+        std::string type;
 };
 
 #endif // SEAT_H
